@@ -9,8 +9,6 @@ from import_export import resources
 
 from . import models
 
-from jet.filters import RelatedFieldAjaxListFilter
-
 
 class CountryTabularInline(admin.TabularInline):
     fields = ('code', 'name', )
@@ -242,6 +240,16 @@ class CustomerAdmin(ImportExportModelAdmin):
 class CalculationAdmin(admin.ModelAdmin):
     icon = '<i class="fa fa-building"></i>'
     readonly_fields = ('salesman',)
+    fieldsets = (
+        (None, {
+            'fields': ('order_no',  'sport_distribution_order_id', 'email', 'ch_type', 'delivery_place',)}),
+        (_('Numeric'), {
+            'fields': ('order_security', 'quantity', )}),
+        (_('Details'), {
+            'fields': ('dealer', 'financing', 'application', 'order_stock', 'customer', )}),
+        (_('Dates'), {
+            'fields': ('bodybuilder_crd', 'agreed_delivery_date', 'date', )})
+    )
 
     def save_model(self, request, obj, form, change):
         if getattr(obj, 'salesman', None) is None:

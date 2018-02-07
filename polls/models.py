@@ -255,6 +255,8 @@ class Calculation(models.Model):
             ('STOCK', 'Stock')))
     order_no = models.CharField(_('order no'), max_length=256)
     sport_distribution_order_id = models.CharField(_('sport/distributionOrderID'), max_length=40)
+    customer = models.OneToOneField(
+        'Customer', on_delete=models.CASCADE, related_name='+', blank=True, null=True,)
 
 
 @python_2_unicode_compatible
