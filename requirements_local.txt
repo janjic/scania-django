@@ -1,0 +1,11 @@
+# Make sure pip is using a newer version.
+pip>=9.0.1
+
+# Local development tools.
+django-debug-toolbar>=1.8
+ipdb>=0.10.3
+ipython[notebook]>=3.2.1
+Werkzeug>=0.10.4
+
+# Include the requirements.txt requirements file
+-r requirements.txt

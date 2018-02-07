@@ -1,0 +1,9 @@
+{% load i18n %}
+<ul>
+    <li><a href="{% url 'polls:city_list' %}">{% trans 'Cities' %}</a></li>
+    <li><a href="{% url 'polls:continent_list' %}">{% trans 'Continents' %}</a></li>
+    <li><a href="{% url 'polls:country_list' %}">{% trans 'Countries' %}</a></li>
+    <li><a href="{% url 'polls:ocean_list' %}">{% trans 'Oceans' %}</a></li>
+    <li><a href="{% url 'polls:sea_list' %}">{% trans 'Seas' %}</a></li>
+    <li><a href="{% url 'polls:customer_list' %}">{% trans 'Customers' %}</a></li>
+</ul>
