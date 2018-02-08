@@ -246,7 +246,7 @@ class CalculationAdmin(admin.ModelAdmin):
         (_('Numeric'), {
             'fields': ('order_security', 'quantity', )}),
         (_('Details'), {
-            'fields': ('dealer', 'financing', 'application', 'order_stock', 'customer', )}),
+            'fields': ('dealer', 'financing', 'application', 'order_stock', 'customer', 'customer2', )}),
         (_('Dates'), {
             'fields': ('bodybuilder_crd', 'agreed_delivery_date', 'date', )})
     )
