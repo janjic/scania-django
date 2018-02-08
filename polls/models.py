@@ -263,7 +263,7 @@ class Calculation(models.Model):
 
 @python_2_unicode_compatible
 class PreCalculation(models.Model):
-    calculation = models.ForeignKey(Calculation, on_delete=models.SET_NULL, blank=True, null=True, verbose_name=_('calculation'))
+    calculation = models.ForeignKey(Calculation, on_delete=models.CASCADE, blank=True, null=True, verbose_name=_('calculation'))
     dil_purchase_price_sport = models.FloatField(_('dil purchase price sport'), default=0)
     discount_1 = models.FloatField(_('discount 1'), default=0)
     discount_2 = models.FloatField(_('discount 2'), default=0)
@@ -300,6 +300,18 @@ class PreCalculation(models.Model):
     dealer_final_margin = models.FloatField(_('DEALER FINAL MARGIN'), default=0)
     salesman = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
 
+    def save(self, *args, **kwargs):
+        self.dealer_purchase_price = self.dil_purchase_price_sport - self.discount_1 - self.discount_2 - self.extra_support
+        self.total_cost = self.pdi + self.r_servis + self.painting + self.air_condition + self.warranty + self.trade_in + self.jacket_and_presents + self.radio + self.tachograph + self.adaptation_rup + self.estimated_tender_costs + self.driver_training
+        self.dealer_net_purchace_price_cost = self.total_cost + self.dealer_purchase_price
+        self.price_gain_loss = self.sales_price - self.dealer_net_purchace_price_cost
+        try:
+            self.dealer_final_margin = (self.price_gain_loss / self.sales_price) * 100
+        except ZeroDivisionError:
+            pass
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.calculation.order_no
+        return str(self.id)
 

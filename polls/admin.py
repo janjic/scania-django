@@ -289,28 +289,9 @@ class CalculationAdmin(admin.ModelAdmin):
         return super(CalculationAdmin, self).change_view(request, object_id)
 
     def save_model(self, request, obj, form, change):
-        is_new = False
         if getattr(obj, 'salesman', None) is None:
             obj.salesman = request.user
-            is_new = True
         obj.save()
-        if is_new:
-            pre_calculation = models.PreCalculation()
-            pre_calculation.calculation = obj
-        else:
-            pre_calculation = models.PreCalculation.objects.get(calculation=obj)
-            pre_calculation.dealer_purchase_price = pre_calculation.dealer_purchase_price - pre_calculation.discount_1 - pre_calculation.discount_2 - pre_calculation.extra_support
-            pre_calculation.total_cost = pre_calculation.pdi + pre_calculation.r_servis + pre_calculation.painting + pre_calculation.air_condition + pre_calculation.warranty + pre_calculation.trade_in + pre_calculation.jacket_and_presents + pre_calculation.radio + pre_calculation.tachograph + pre_calculation.adaptation_rup + pre_calculation.estimated_tender_costs + pre_calculation.driver_training
-            pre_calculation.dealer_net_purchace_price_cost = pre_calculation.total_cost + pre_calculation.dealer_purchase_price
-            pre_calculation.price_gain_loss = pre_calculation.sales_price - pre_calculation.dealer_net_purchace_price_cost
-            try:
-                pre_calculation.dealer_final_margin = (pre_calculation.price_gain_loss / pre_calculation.sales_price) * 100
-            except ZeroDivisionError:
-                pass
-            if getattr(pre_calculation, 'salesman', None) is None:
-                pre_calculation.salesman = request.user
-        
-        pre_calculation.save()
 
     def get_queryset(self, request):
         """Limit Pages to those that belong to the request's user."""
@@ -367,7 +348,7 @@ class PreCalculationAdmin(admin.ModelAdmin):
         return qs.filter(salesman=request.user)
 
     def save_model(self, request, obj, form, change):
-            obj.dealer_purchase_price = obj.dealer_purchase_price - obj.discount_1 - obj.discount_2 - obj.extra_support
+            obj.dealer_purchase_price = obj.dil_purchase_price_sport - obj.discount_1 - obj.discount_2 - obj.extra_support
             obj.total_cost = obj.pdi + obj.r_servis + obj.painting + obj.air_condition + obj.warranty + obj.trade_in + obj.jacket_and_presents + obj.radio + obj.tachograph + obj.adaptation_rup + obj.estimated_tender_costs + obj.driver_training
             obj.dealer_net_purchace_price_cost = obj.total_cost + obj.dealer_purchase_price
             obj.price_gain_loss = obj.sales_price - obj.dealer_net_purchace_price_cost
@@ -379,3 +360,9 @@ class PreCalculationAdmin(admin.ModelAdmin):
                 obj.salesman = request.user
 
             obj.save()
+
+    def response_add(self, request, obj, post_url_continue=None):
+        return redirect('/admin/polls/precalculation/' + str(obj.id) + '/change/#/tab/module_4/')
+
+    def response_change(self, request, obj):
+        return redirect('/admin/polls/precalculation/' + str(obj.id) + '/change/#/tab/module_4/')
