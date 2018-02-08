@@ -45,7 +45,7 @@ class DefaultIndexDashboard(Dashboard):
         # append a recent actions module
         self.children.append(modules.RecentActions(
             _('Recent Actions'),
-            20,
-            column=2,
+            10,
+            column=0,
             order=1
         ))
