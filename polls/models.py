@@ -256,6 +256,35 @@ class Calculation(models.Model):
     order_no = models.CharField(_('order no'), max_length=256)
     sport_distribution_order_id = models.CharField(_('sport/distributionOrderID'), max_length=40)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, editable=True)
+    customer2 = models.CharField(
+        max_length=2, choices=(
+            ('uros_debelak', 'Uroš Debelak'),
+            ('milan_min', 'Milan Mir'),
+            ('mitja_ladinek', 'Mitja Ladinek'),
+            ('luka_cupkovic', 'Luka Čupkovič'),
+            ('izidor_golicnik', 'Izidor Goličnik'),
+            ('elvis_madrusa', 'Elvis Madruša'),
+
+            ('tomislav_mucnjak', 'Tomislav Mučnjak'),
+            ('robert_tisaj', 'Robert Tisaj'),
+            ('kresimir_pehar', 'Krešimir Pehar'),
+            ('goran_kovac', 'Goran Kovač'),
+            ('branimir_lukacevic', 'Branimir Lukačević'),
+            ('dubravko_joka', 'Dubravko Joka'),
+            ('teodor_naka', 'Teodor Naka'),
+
+            ('michel_mrdjen', 'Michel Mrdjen'),
+            ('dejan_jeremic', 'Dejan Jeremić'),
+            ('nikola_jovanovic', 'Nikola Jovanović'),
+            ('mile_sarvevic', 'Mile Šarčević'),
+            ('srdjan_masic', 'Srdjan Mašić'),
+            ('martin_milevski', 'Martin Milevski'),
+            ('dejan_nikolic', 'Dejan Nikolić'),
+            ('dejan_nastic', 'Dejan Nastić'),
+
+            ('bojan_lolic', 'Bojan Lolić'),
+            ('dalila_glavic', 'Dalila Glavić'),
+            ('dejan_koleska', 'Dejan Koleška')))
 
     def __str__(self):
         return self.order_no
