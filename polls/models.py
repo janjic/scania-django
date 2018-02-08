@@ -182,11 +182,13 @@ class Customer(models.Model):
         ordering = ['nav_cust_name']
 
     def __str__(self):
-        return self.id
+        return self.id + '-' + self.nav_cust_name + '-' + self.nav_cust_search_name + '-' + self.mds_cust_id + '-'\
+               + self.nav_vat + '-' + self.source
 
     @staticmethod
     def autocomplete_search_fields():
-        return 'nav_cust_name', 'nav_cust_search_name'
+        return 'id', 'nav_cust_name', 'nav_cust_search_name', 'mds_cust_id', 'nav_vat', 'source'
+
 
 @python_2_unicode_compatible
 class Calculation(models.Model):
@@ -284,7 +286,7 @@ class Calculation(models.Model):
 
             ('bojan_lolic', 'Bojan Lolić'),
             ('dalila_glavic', 'Dalila Glavić'),
-            ('dejan_koleska', 'Dejan Koleška')))
+            ('dejan_koleska', 'Dejan Koleška')), blank=True, null=True)
 
     def __str__(self):
         return self.order_no
