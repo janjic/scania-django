@@ -289,9 +289,29 @@ class CalculationAdmin(admin.ModelAdmin):
         return super(CalculationAdmin, self).change_view(request, object_id)
 
     def save_model(self, request, obj, form, change):
+        is_new = False
         if getattr(obj, 'salesman', None) is None:
             obj.salesman = request.user
+            is_new = True
         obj.save()
+        if is_new:
+            pre_calculation = models.PreCalculation()
+            pre_calculation.calculation = obj
+        else:
+            pre_calculation = models.PreCalculation.objects.get(calculation=obj)
+            pre_calculation.dealer_purchase_price = pre_calculation.dealer_purchase_price - pre_calculation.discount_1 - pre_calculation.discount_2 - pre_calculation.extra_support
+            pre_calculation.total_cost = pre_calculation.pdi + pre_calculation.r_servis + pre_calculation.painting + pre_calculation.air_condition + pre_calculation.warranty + pre_calculation.trade_in + pre_calculation.jacket_and_presents + pre_calculation.radio + pre_calculation.tachograph + pre_calculation.adaptation_rup + pre_calculation.estimated_tender_costs + pre_calculation.driver_training
+            pre_calculation.dealer_net_purchace_price_cost = pre_calculation.total_cost + pre_calculation.dealer_purchase_price
+            pre_calculation.price_gain_loss = pre_calculation.sales_price - pre_calculation.dealer_net_purchace_price_cost
+            try:
+                pre_calculation.dealer_final_margin = (
+                                                                  pre_calculation.price_gain_loss / pre_calculation.sales_price) * 100
+            except ZeroDivisionError:
+                pass
+            if getattr(pre_calculation, 'salesman', None) is None:
+                pre_calculation.salesman = request.user
+
+        pre_calculation.save()
 
     def get_queryset(self, request):
         """Limit Pages to those that belong to the request's user."""
