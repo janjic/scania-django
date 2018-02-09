@@ -295,11 +295,11 @@ class Calculation(models.Model):
 @python_2_unicode_compatible
 class PreCalculation(models.Model):
     calculation = models.ForeignKey(Calculation, on_delete=models.CASCADE, blank=True, null=True, verbose_name=_('calculation'))
-    dil_purchase_price_sport = models.FloatField(_('dil purchase price sport'), default=0)
-    discount_1 = models.FloatField(_('discount 1'), default=0)
-    discount_2 = models.FloatField(_('discount 2'), default=0)
-    extra_support = models.FloatField(_('extra support'), default=0)
-    dealer_purchase_price = models.FloatField(_('dealer purchase price'), default=0)
+    dil_purchase_price_sport = models.FloatField(_('dil purchase price sport €'), default=0)
+    discount_1 = models.FloatField(_('discount 1 €'), default=0)
+    discount_2 = models.FloatField(_('discount 2 €'), default=0)
+    extra_support = models.FloatField(_('extra support €'), default=0)
+    dealer_purchase_price = models.FloatField(_('dealer purchase price €'), default=0)
     pdi = models.IntegerField(
         choices=(
             (0, 0),
@@ -312,23 +312,23 @@ class PreCalculation(models.Model):
             (2, 2),
             (10, 10),
             (20, 20)),  default=0)
-    painting = models.FloatField(_('painting'), default=0)
-    air_condition = models.FloatField(_('air condition'),  default=0)
-    warranty = models.FloatField(_('warranty'), default=0)
-    trade_in = models.FloatField(_('trade in'), default=0)
-    chassis_no_trade_in = models.CharField(_('chassis no trade in'), max_length=256, blank=True, null=True)
-    jacket_and_presents = models.FloatField(_('jackets & Presents'), default=0)
-    radio = models.FloatField(_('radio'), default=0)
-    tachograph = models.FloatField(_('tachograph'), default=0)
-    adaptation_rup = models.FloatField(_('adaptation RUP'), default=0)
-    estimated_tender_costs = models.FloatField(_('estimated tender costs'), default=0)
-    driver_training = models.FloatField(_('driver training'), default=0)
-    other = models.CharField(_('other'), max_length=250, blank=True, null=True)
-    sales_price = models.FloatField(_('sales price'), default=0)
-    total_cost = models.FloatField(_('total cost'), default=0)
-    dealer_net_purchace_price_cost = models.FloatField(_('DEALER NET PURCHACE PRICE + COST'), default=0)
-    price_gain_loss = models.FloatField(_('PRICE GAIN / LOSS'), default=0)
-    dealer_final_margin = models.FloatField(_('DEALER FINAL MARGIN'), default=0)
+    painting = models.FloatField(_('painting €'), default=0)
+    air_condition = models.FloatField(_('air condition €'),  default=0)
+    warranty = models.FloatField(_('warranty €'), default=0)
+    trade_in = models.FloatField(_('trade in €'), default=0)
+    chassis_no_trade_in = models.CharField(_('chassis no trade in €'), max_length=256, blank=True, null=True)
+    jacket_and_presents = models.FloatField(_('jackets & Presents €'), default=0)
+    radio = models.FloatField(_('radio €'), default=0)
+    tachograph = models.FloatField(_('tachograph €'), default=0)
+    adaptation_rup = models.FloatField(_('adaptation RUP €'), default=0)
+    estimated_tender_costs = models.FloatField(_('estimated tender costs €'), default=0)
+    driver_training = models.FloatField(_('driver training €'), default=0)
+    other = models.CharField(_('other €'), max_length=250, blank=True, null=True)
+    sales_price = models.FloatField(_('sales price €'), default=0)
+    total_cost = models.FloatField(_('total cost €'), default=0)
+    dealer_net_purchace_price_cost = models.FloatField(_('DEALER NET PURCHACE PRICE + COST €'), default=0)
+    price_gain_loss = models.FloatField(_('PRICE GAIN / LOSS €'), default=0)
+    dealer_final_margin = models.FloatField(_('DEALER FINAL MARGIN €'), default=0)
     salesman = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
 
     def save(self, *args, **kwargs):
