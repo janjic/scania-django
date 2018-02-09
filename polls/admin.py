@@ -344,7 +344,7 @@ class PreCalculationAdmin(admin.ModelAdmin):
                        'price_gain_loss', 'dealer_final_margin',)
 
     #search_fields = ('pdi', 'mds_cust_id', 'nav_vat', 'source')
-    list_filter = ('pdi', 'r_servis', 'other')
+    list_filter = ('pdi', 'r_servis')
     fieldsets = (
         (None, {
             'fields': ('chassis_no_trade_in', 'other', 'calculation')}),
