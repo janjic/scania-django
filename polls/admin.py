@@ -218,6 +218,7 @@ class CustomerResource(resources.ModelResource):
     class Meta:
         model = models.Customer
         fields = ('id', 'nav_cust_name', 'nav_cust_search_name', 'mds_cust_id', 'nav_vat', 'source')
+        export_order = ('id', 'nav_cust_name', 'nav_cust_search_name', 'mds_cust_id', 'nav_vat', 'source')
 
 @admin.register(models.Customer)
 class CustomerAdmin(ImportExportModelAdmin):
