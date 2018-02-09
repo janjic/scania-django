@@ -323,7 +323,7 @@ class PreCalculation(models.Model):
     adaptation_rup = models.FloatField(_('adaptation RUP €'), default=0)
     estimated_tender_costs = models.FloatField(_('estimated tender costs €'), default=0)
     driver_training = models.FloatField(_('driver training €'), default=0)
-    other = models.CharField(_('other €'), max_length=250, blank=True, null=True)
+    other = models.CharField(_('other '), max_length=250, blank=True, null=True)
     sales_price = models.FloatField(_('sales price €'), default=0)
     total_cost = models.FloatField(_('total cost €'), default=0)
     dealer_net_purchace_price_cost = models.FloatField(_('dealer net purchase price + cost €'), default=0)
