@@ -10,7 +10,7 @@ from import_export import resources
 
 from . import models
 
-
+admin.site.site_url = None
 # class CountryTabularInline(admin.TabularInline):
 #     fields = ('code', 'name', )
 #     model = models.Country
