@@ -155,7 +155,7 @@ STATICFILES_FINDERS = (
 MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 
 MEDIA_URL = '/media/'
-
+SITE_URL = None
 # Email settings.
 
 
