@@ -342,6 +342,9 @@ class PreCalculationAdmin(admin.ModelAdmin):
     icon = '<i class="fa fa-building"></i>'
     list_display = ('id', 'dealer_purchase_price', 'total_cost', 'dealer_net_purchace_price_cost',
                        'price_gain_loss', 'dealer_final_margin',)
+
+    #search_fields = ('pdi', 'mds_cust_id', 'nav_vat', 'source')
+    list_filter = ('pdi', 'r_servis', 'other')
     fieldsets = (
         (None, {
             'fields': ('chassis_no_trade_in', 'other', 'calculation')}),
