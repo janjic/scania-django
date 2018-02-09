@@ -265,7 +265,7 @@ class PreCalculationStackedInline(admin.StackedInline):
 class CalculationAdmin(admin.ModelAdmin):
     icon = '<i class="fa fa-building"></i>'
     readonly_fields = ('salesman', 'id')
-    list_display = ('order_no', 'ch_type', 'delivery_place', 'dealer', 'customer')
+    list_display = ('order_no', 'ch_type', 'delivery_place', 'dealer', 'customer', 'quantity')
     search_fields = ('id', 'order_no', 'salesman', 'customer', 'salesman2', 'order_stock')
     list_filter = ('dealer', 'salesman2', 'order_stock',)
     fieldsets = (
