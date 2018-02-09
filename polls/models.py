@@ -291,6 +291,10 @@ class Calculation(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @staticmethod
+    def autocomplete_search_fields():
+        return 'id', 'order_no', 'salesman', 'customer', 'salesman2', 'order_stock'
+
 
 @python_2_unicode_compatible
 class PreCalculation(models.Model):
