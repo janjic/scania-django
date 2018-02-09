@@ -14,6 +14,11 @@
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "core/css/branding.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static "core/css/icons/style.css" %}"/>
+    <style>
+    .inline-group .aligned label {
+        width: 350px;
+    }
+    </style>
 {% endblock %}
 
 {% block nav-global %}

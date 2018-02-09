@@ -300,13 +300,13 @@ class PreCalculation(models.Model):
     discount_2 = models.FloatField(_('discount 2 €'), default=0)
     extra_support = models.FloatField(_('extra support €'), default=0)
     dealer_purchase_price = models.FloatField(_('dealer purchase price €'), default=0)
-    pdi = models.IntegerField(
+    pdi = models.IntegerField(_('pdi €'),
         choices=(
             (0, 0),
             (5, 5),
             (7, 7),
             (9, 9)), default=0)
-    r_servis = models.IntegerField(
+    r_servis = models.IntegerField(_('R service €'),
         choices=(
             (0, 0),
             (2, 2),
