@@ -225,6 +225,7 @@ class CustomerAdmin(ImportExportModelAdmin):
     icon = '<i class="material-icons">account_balance</i>'
     search_fields = ('id', 'nav_cust_search_name', 'mds_cust_id', 'nav_vat', 'source')
     list_display = ('id', 'nav_cust_search_name', 'mds_cust_id', 'nav_vat', 'source')
+    list_filter = ('source',)
     ordering = ['-nav_cust_search_name']
     resource_class = CustomerResource
 
