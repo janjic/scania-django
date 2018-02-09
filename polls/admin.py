@@ -340,7 +340,7 @@ class PreCalculationAdmin(admin.ModelAdmin):
                        'price_gain_loss', 'dealer_final_margin',)
     fieldsets = (
         (None, {
-            'fields': ('chassis_no_trade_in', 'calculation')}),
+            'fields': ('chassis_no_trade_in', 'other', 'calculation')}),
         (_('PDI/R'), {
             'fields': ('pdi', 'r_servis',)}),
         (_('Discounts'), {
@@ -348,7 +348,7 @@ class PreCalculationAdmin(admin.ModelAdmin):
         (_('Details'), {
             'fields': ('extra_support', 'painting', 'air_condition', 'warranty', 'trade_in',
                        'jacket_and_presents', 'radio', 'tachograph', 'adaptation_rup', 'estimated_tender_costs',
-                       'driver_training', 'sales_price', 'other')}),
+                       'driver_training', 'sales_price',)}),
         (_('Results'), {
             'fields': ('dealer_purchase_price', 'total_cost', 'dealer_net_purchace_price_cost',
                        'price_gain_loss', 'dealer_final_margin',)})
