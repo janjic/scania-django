@@ -258,7 +258,7 @@ class Calculation(models.Model):
     order_no = models.CharField(_('order no'), max_length=256)
     sport_distribution_order_id = models.CharField(_('sport/distributionOrderID'), max_length=40)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, editable=True)
-    customer2 = models.CharField(
+    salesman2 = models.CharField(
         max_length=55, choices=(
             ('uros_debelak', 'Uroš Debelak'),
             ('milan_min', 'Milan Mir'),
