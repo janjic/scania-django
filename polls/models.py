@@ -289,7 +289,7 @@ class Calculation(models.Model):
             ('dejan_koleska', 'Dejan Koleška')), blank=True, null=True)
 
     def __str__(self):
-        return self.order_no
+        return self.id
 
 
 @python_2_unicode_compatible
