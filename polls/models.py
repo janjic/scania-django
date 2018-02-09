@@ -259,7 +259,7 @@ class Calculation(models.Model):
     sport_distribution_order_id = models.CharField(_('sport/distributionOrderID'), max_length=40)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, editable=True)
     customer2 = models.CharField(
-        max_length=2, choices=(
+        max_length=55, choices=(
             ('uros_debelak', 'Uroš Debelak'),
             ('milan_min', 'Milan Mir'),
             ('mitja_ladinek', 'Mitja Ladinek'),
@@ -332,14 +332,15 @@ class PreCalculation(models.Model):
     salesman = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
 
     def save(self, *args, **kwargs):
-        self.dealer_purchase_price = self.dil_purchase_price_sport - self.discount_1 - self.discount_2 - self.extra_support
-        self.total_cost = self.pdi + self.r_servis + self.painting + self.air_condition + self.warranty + self.trade_in + self.jacket_and_presents + self.radio + self.tachograph + self.adaptation_rup + self.estimated_tender_costs + self.driver_training
-        self.dealer_net_purchace_price_cost = self.total_cost + self.dealer_purchase_price
-        self.price_gain_loss = self.sales_price - self.dealer_net_purchace_price_cost
-        try:
-            self.dealer_final_margin = (self.price_gain_loss / self.sales_price) * 100
-        except ZeroDivisionError:
-            pass
+        if not self.pk:
+            self.dealer_purchase_price = self.dil_purchase_price_sport - self.discount_1 - self.discount_2 - self.extra_support
+            self.total_cost = self.pdi + self.r_servis + self.painting + self.air_condition + self.warranty + self.trade_in + self.jacket_and_presents + self.radio + self.tachograph + self.adaptation_rup + self.estimated_tender_costs + self.driver_training
+            self.dealer_net_purchace_price_cost = self.total_cost + self.dealer_purchase_price
+            self.price_gain_loss = self.sales_price - self.dealer_net_purchace_price_cost
+            try:
+                self.dealer_final_margin = (self.price_gain_loss / self.sales_price) * 100
+            except ZeroDivisionError:
+                pass
 
         super().save(*args, **kwargs)
 
