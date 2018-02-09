@@ -266,7 +266,7 @@ class CalculationAdmin(admin.ModelAdmin):
     icon = '<i class="fa fa-building"></i>'
     readonly_fields = ('salesman', 'id')
     list_display = ('order_no', 'ch_type', 'delivery_place', 'dealer', 'customer')
-    list_filter = ('customer', 'dealer')
+    list_filter = ('dealer', )
     fieldsets = (
         (None, {
             'fields': ('id', 'order_no',  'sport_distribution_order_id', 'email', 'ch_type', 'delivery_place',)}),
