@@ -262,11 +262,11 @@ class PreCalculationStackedInline(admin.StackedInline):
 @admin.register(models.Calculation)
 class CalculationAdmin(admin.ModelAdmin):
     icon = '<i class="fa fa-building"></i>'
-    readonly_fields = ('salesman',)
+    readonly_fields = ('salesman', 'id')
     list_display = ('order_no', 'ch_type', 'delivery_place', 'dealer', 'customer')
     fieldsets = (
         (None, {
-            'fields': ('order_no',  'sport_distribution_order_id', 'email', 'ch_type', 'delivery_place',)}),
+            'fields': ('id', 'order_no',  'sport_distribution_order_id', 'email', 'ch_type', 'delivery_place',)}),
         (_('Numeric'), {
             'fields': ('order_security', 'quantity', )}),
         (_('Details'), {
