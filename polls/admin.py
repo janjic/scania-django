@@ -242,7 +242,7 @@ class PreCalculationStackedInline(admin.StackedInline):
     extra = 0
     fieldsets = (
         (None, {
-            'fields': ('chassis_no_trade_in',)}),
+            'fields': ('chassis_no_trade_in', 'other')}),
         (_('PDI/R'), {
             'fields': ('pdi', 'r_servis',)}),
         (_('Discounts'), {
@@ -250,7 +250,7 @@ class PreCalculationStackedInline(admin.StackedInline):
         (_('Details'), {
             'fields': ('extra_support', 'painting', 'air_condition', 'warranty', 'trade_in',
                        'jacket_and_presents', 'radio', 'tachograph', 'adaptation_rup', 'estimated_tender_costs',
-                       'driver_training', 'sales_price', 'other')}),
+                       'driver_training', 'sales_price', )}),
         (_('Results'), {
             'fields': ('dealer_purchase_price', 'total_cost', 'dealer_net_purchace_price_cost',
                        'price_gain_loss', 'dealer_final_margin',)})
