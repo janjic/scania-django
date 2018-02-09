@@ -326,7 +326,7 @@ class PreCalculation(models.Model):
     other = models.CharField(_('other €'), max_length=250, blank=True, null=True)
     sales_price = models.FloatField(_('sales price €'), default=0)
     total_cost = models.FloatField(_('total cost €'), default=0)
-    dealer_net_purchace_price_cost = models.FloatField(_('dealer net purchase price+cost €'), default=0)
+    dealer_net_purchace_price_cost = models.FloatField(_('dealer net price + cost €'), default=0)
     price_gain_loss = models.FloatField(_('PRICE GAIN / LOSS €'), default=0)
     dealer_final_margin = models.FloatField(_('DEALER FINAL MARGIN €'), default=0)
     salesman = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
